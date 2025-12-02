@@ -14,7 +14,7 @@ import {
   Tabs,
   Tab,
 } from '@mui/material';
-import { PieChart } from '../components/PieChart';
+import { MonthlyProgressChart, completionToMonths } from '../components/charts';
 import { safetyCriteria } from '../data/mockData';
 
 type SafetyCategory = 'Лекарственная безопасность' | 'Эпидемиологическая безопасность' | 'Информационная безопасность' | 'all';
@@ -107,10 +107,10 @@ export const SafetyPage: React.FC = () => {
                     <TableCell>{criterion.responsible}</TableCell>
                     <TableCell align="center">
                       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                        <PieChart
-                          completion={criterion.completion}
-                          status={criterion.status}
-                          size={50}
+                        <MonthlyProgressChart
+                          months={completionToMonths(criterion.completion, criterion.status)}
+                          size={80}
+                          year={new Date().getFullYear()}
                         />
                       </Box>
                     </TableCell>

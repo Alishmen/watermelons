@@ -25,11 +25,14 @@ export interface SafetyCriterion {
   id: string;
   number: number;
   category: 'Лекарственная безопасность' | 'Эпидемиологическая безопасность' | 'Информационная безопасность';
+  subcategory?: 'Антитеррористическая безопасность' | 'Противопожарная безопасность' | 'Информационная безопасность' | 'Травматизм';
   criterion: string;
   periodicity: string;
   responsible: string;
   completion: number; // 0-100
   status: StatusType;
+  // Опциональные данные по месяцам (0-11 индексы месяцев)
+  monthlyData?: Record<number, StatusType>; // { 0: 'green', 1: 'yellow', ... }
 }
 
 export interface PerformanceParameter {
@@ -42,6 +45,8 @@ export interface PerformanceParameter {
   completion: number; // 0-100
   status: StatusType;
   i9?: string; // Идентификатор И9
+  // Опциональные данные по месяцам (0-11 индексы месяцев)
+  monthlyData?: Record<number, StatusType>; // { 0: 'green', 1: 'yellow', ... }
 }
 
 export interface EconomicIndicator {

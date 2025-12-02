@@ -12,7 +12,7 @@ import {
   Card,
   CardContent,
 } from '@mui/material';
-import { PieChart } from '../components/PieChart';
+import { MonthlyProgressChart, completionToMonths } from '../components/charts';
 import { performanceParameters } from '../data/mockData';
 
 export const QualityTFOMSPage: React.FC = () => {
@@ -72,10 +72,10 @@ export const QualityTFOMSPage: React.FC = () => {
                     <TableCell>{param.responsible}</TableCell>
                     <TableCell align="center">
                       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                        <PieChart
-                          completion={param.completion}
-                          status={param.status}
-                          size={50}
+                        <MonthlyProgressChart
+                          months={completionToMonths(param.completion, param.status)}
+                          size={80}
+                          year={new Date().getFullYear()}
                         />
                       </Box>
                     </TableCell>
@@ -129,10 +129,10 @@ export const QualityTFOMSPage: React.FC = () => {
                     <TableCell>{param.responsible}</TableCell>
                     <TableCell align="center">
                       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                        <PieChart
-                          completion={param.completion}
-                          status={param.status}
-                          size={50}
+                        <MonthlyProgressChart
+                          months={completionToMonths(param.completion, param.status)}
+                          size={80}
+                          year={new Date().getFullYear()}
                         />
                       </Box>
                     </TableCell>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box } from '@mui/material';
-import { StatusType } from '../types';
+import { StatusType } from '../../types';
 
 interface PieChartProps {
   completion: number; // 0-100
@@ -8,10 +8,15 @@ interface PieChartProps {
   size?: number;
 }
 
+/**
+ * Компонент круговой диаграммы с 12 сегментами
+ * @deprecated Используйте MonthlyProgressChart для отображения месяцев
+ * Этот компонент оставлен для обратной совместимости
+ */
 export const PieChart: React.FC<PieChartProps> = ({ 
   completion, 
   status, 
-  size = 60
+  size = 100
 }) => {
   const radius = size / 2;
   const totalSegments = 12; // Фиксированное количество сегментов

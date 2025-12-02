@@ -12,7 +12,7 @@ import {
   Card,
   CardContent,
 } from '@mui/material';
-import { PieChart } from '../components/PieChart';
+import { MonthlyProgressChart, completionToMonths } from '../components/charts';
 import { safetyCriteria } from '../data/mockData';
 
 export const SafetyLekPage: React.FC = () => {
@@ -78,15 +78,15 @@ export const SafetyLekPage: React.FC = () => {
                     </TableCell>
                     <TableCell>{criterion.periodicity}</TableCell>
                     <TableCell>{criterion.responsible}</TableCell>
-                    <TableCell align="center">
-                      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                        <PieChart
-                          completion={criterion.completion}
-                          status={criterion.status}
-                          size={50}
-                        />
-                      </Box>
-                    </TableCell>
+                      <TableCell align="center">
+                        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                          <MonthlyProgressChart
+                            months={completionToMonths(criterion.completion, criterion.status)}
+                            size={80}
+                            year={new Date().getFullYear()}
+                          />
+                        </Box>
+                      </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
