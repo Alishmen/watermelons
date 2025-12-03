@@ -40,9 +40,9 @@ interface LayoutProps {
 const menuItems = [
   { id: 'safety-lek', label: 'S Безопасность (Лек)', icon: <PharmacyIcon />, color: '#f44336' },
   { id: 'safety-info', label: 'S Безопасность (Информ)', icon: <ComputerIcon />, color: '#f44336' },
-  { id: 'quality-tfoms', label: 'Q Качество (Пар МО)(ТФОМС)', icon: <CheckCircleIcon />, color: '#2196f3' },
-  { id: 'quality-i9', label: 'Q Качество (И9)', icon: <CheckCircleIcon />, color: '#2196f3' },
-  { id: 'quality-eck', label: 'Q Качество (ЕЦК)', icon: <CheckCircleIcon />, color: '#2196f3' },
+  // { id: 'quality-tfoms', label: 'Q Качество (Пар МО)(ТФОМС)', icon: <CheckCircleIcon />, color: '#2196f3' },
+  { id: 'quality-i9', label: 'Q Качество', icon: <CheckCircleIcon />, color: '#2196f3' },
+  // { id: 'quality-eck', label: 'Q Качество (ЕЦК)', icon: <CheckCircleIcon />, color: '#2196f3' },
   { id: 'execution', label: 'D Исполнение (Кри главы)', icon: <AssessmentIcon />, color: '#4caf50' },
   { id: 'costs', label: 'С Затраты', icon: <MoneyIcon />, color: '#ffc107' },
   { id: 'corpculture', label: 'М КорпКультура', icon: <BusinessIcon />, color: '#9c27b0' },

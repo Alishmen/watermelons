@@ -24,9 +24,9 @@ export const QualityI9Page: React.FC = () => {
       <Typography variant="h4" sx={{ mb: 1, fontWeight: 600 }}>
         I уровень информационного центра
       </Typography>
-      <Typography variant="h6" sx={{ mb: 3, color: 'text.secondary' }}>
+      {/* <Typography variant="h6" sx={{ mb: 3, color: 'text.secondary' }}>
         Параметры результативности МО (И9)
-      </Typography>
+      </Typography> */}
 
       <Card
         sx={{
@@ -38,7 +38,7 @@ export const QualityI9Page: React.FC = () => {
       >
         <CardContent>
           <Typography variant="h6" sx={{ fontWeight: 600 }}>
-            Параметры результативности с идентификатором И9
+            Параметры результативности
           </Typography>
         </CardContent>
       </Card>
@@ -48,7 +48,6 @@ export const QualityI9Page: React.FC = () => {
           <TableHead>
             <TableRow sx={{ backgroundColor: 'grey.100' }}>
               <TableCell sx={{ fontWeight: 600, width: '60px' }}>п/п</TableCell>
-              <TableCell sx={{ fontWeight: 600, width: '80px' }}>И9</TableCell>
               <TableCell sx={{ fontWeight: 600 }}>Критерий</TableCell>
               <TableCell sx={{ fontWeight: 600, width: '150px' }}>Периодичность</TableCell>
               <TableCell sx={{ fontWeight: 600, width: '250px' }}>Ответственный</TableCell>
@@ -61,7 +60,6 @@ export const QualityI9Page: React.FC = () => {
             {filteredParams.map((param) => (
               <TableRow key={param.id} hover>
                 <TableCell>{param.number}</TableCell>
-                <TableCell>{param.i9}</TableCell>
                 <TableCell>
                   <Typography variant="body2">{param.criterion}</Typography>
                 </TableCell>

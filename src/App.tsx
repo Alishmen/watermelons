@@ -6,9 +6,9 @@ import { Dashboard } from './components/Dashboard';
 import { KPIPage } from './pages/KPIPage';
 import { SafetyLekPage } from './pages/SafetyLekPage';
 import { SafetyInfoPage } from './pages/SafetyInfoPage';
-import { QualityTFOMSPage } from './pages/QualityTFOMSPage';
+// import { QualityTFOMSPage } from './pages/QualityTFOMSPage';
 import { QualityI9Page } from './pages/QualityI9Page';
-import { QualityECKPage } from './pages/QualityECKPage';
+// import { QualityECKPage } from './pages/QualityECKPage';
 import { ExecutionPage } from './pages/ExecutionPage';
 import { EconomicsPage } from './pages/EconomicsPage';
 import { CorpCulturePage } from './pages/CorpCulturePage';
@@ -32,12 +32,12 @@ function App() {
         return <SafetyLekPage />;
       case 'safety-info':
         return <SafetyInfoPage />;
-      case 'quality-tfoms':
-        return <QualityTFOMSPage />;
+      // case 'quality-tfoms':
+      //   return <QualityTFOMSPage />;
       case 'quality-i9':
         return <QualityI9Page />;
-      case 'quality-eck':
-        return <QualityECKPage />;
+      // case 'quality-eck':
+      //   return <QualityECKPage />;
       case 'execution':
         return <ExecutionPage accessLevel={accessLevel} userDepartment={userDepartment} />;
       case 'costs':
