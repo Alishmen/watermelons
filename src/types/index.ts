@@ -39,6 +39,7 @@ export interface PerformanceParameter {
   id: string;
   number: number;
   category: 'Детское население' | 'Взрослое население';
+  subcategory?: 'Анализ уровня внедрения ЕЦП.МИС' | 'Показатели по БСК';
   criterion: string;
   periodicity: string;
   responsible: string;
@@ -89,6 +90,43 @@ export interface DepartmentIndicator {
   complications: number;
   mortality: number;
   treatmentResults: number;
+}
+
+export interface ExecutionCriterion {
+  id: string;
+  number: number;
+  subcategory: 'Показатели исполнения заказа (D)' | 'Производительность труда';
+  criterion: string;
+  periodicity: string;
+  responsible: string;
+  completion: number; // 0-100
+  status: StatusType;
+  // Опциональные данные по месяцам (0-11 индексы месяцев)
+  monthlyData?: Record<number, StatusType>; // { 0: 'green', 1: 'yellow', ... }
+}
+
+export interface CostCriterion {
+  id: string;
+  number: number;
+  criterion: string;
+  periodicity: string;
+  responsible: string;
+  completion: number; // 0-100
+  status: StatusType;
+  // Опциональные данные по месяцам (0-11 индексы месяцев)
+  monthlyData?: Record<number, StatusType>; // { 0: 'green', 1: 'yellow', ... }
+}
+
+export interface CorpCultureCriterion {
+  id: string;
+  number: number;
+  criterion: string;
+  periodicity: string;
+  responsible: string;
+  completion: number; // 0-100
+  status: StatusType;
+  // Опциональные данные по месяцам (0-11 индексы месяцев)
+  monthlyData?: Record<number, StatusType>; // { 0: 'green', 1: 'yellow', ... }
 }
 
 export interface User {

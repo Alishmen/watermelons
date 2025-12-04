@@ -9,65 +9,70 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Card,
+  CardContent,
 } from '@mui/material';
-import { StatusBadge } from '../components/StatusBadge';
-import { economicData } from '../data/mockData';
-
-const formatCurrency = (value: number) => {
-  return new Intl.NumberFormat('ru-RU', {
-    style: 'currency',
-    currency: 'RUB',
-    minimumFractionDigits: 0,
-  }).format(value);
-};
+import { MonthlyProgressChart, completionToMonths } from '../components/charts';
+import { costCriteria } from '../data/mockData';
 
 export const EconomicsPage: React.FC = () => {
   return (
     <Box>
-      <Typography variant="h4" sx={{ mb: 3, fontWeight: 600 }}>
-        Экономические показатели
-      </Typography>
+      {/* <Typography variant="h4" sx={{ mb: 1, fontWeight: 600 }}>
+        I уровень информационного центра
+      </Typography> */}
+
+      <Card
+        sx={{
+          mb: 2,
+          bgcolor: '#ffc107',
+          color: 'white',
+          borderRadius: 2,
+        }}
+      >
+        <CardContent>
+          <Typography variant="h6" sx={{ fontWeight: 600 }}>
+            Затраты
+          </Typography>
+        </CardContent>
+      </Card>
 
       <TableContainer component={Paper}>
-        <Table>
+        <Table size="small">
           <TableHead>
             <TableRow sx={{ backgroundColor: 'grey.100' }}>
-              <TableCell sx={{ fontWeight: 600 }}>Период</TableCell>
-              <TableCell align="right" sx={{ fontWeight: 600 }}>Общие затраты</TableCell>
-              <TableCell align="center" sx={{ fontWeight: 600 }}>Статус</TableCell>
-              <TableCell align="right" sx={{ fontWeight: 600 }}>Медикаменты</TableCell>
-              <TableCell align="right" sx={{ fontWeight: 600 }}>Персонал</TableCell>
-              <TableCell align="right" sx={{ fontWeight: 600 }}>Прочие</TableCell>
-              <TableCell align="center" sx={{ fontWeight: 600 }}>Продажи</TableCell>
-              <TableCell align="center" sx={{ fontWeight: 600 }}>Рентабельность</TableCell>
-              <TableCell align="center" sx={{ fontWeight: 600 }}>Бюджет</TableCell>
+              <TableCell sx={{ fontWeight: 600, width: '60px' }}>п/п</TableCell>
+              <TableCell sx={{ fontWeight: 600 }}>Критерий</TableCell>
+              <TableCell sx={{ fontWeight: 600, width: '150px' }}>Периодичность</TableCell>
+              <TableCell sx={{ fontWeight: 600, width: '250px' }}>Ответственный</TableCell>
+              <TableCell sx={{ fontWeight: 600, width: '120px' }} align="center">
+                Исполнение
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {economicData.map((economic) => (
-              <TableRow key={economic.id} hover>
-                <TableCell>{economic.period}</TableCell>
-                <TableCell align="right">{formatCurrency(economic.totalCosts)}</TableCell>
-                <TableCell align="center">
-                  <StatusBadge status={economic.status} />
+            {costCriteria.map((criterion) => (
+              <TableRow key={criterion.id} hover>
+                <TableCell>{criterion.number}</TableCell>
+                <TableCell>
+                  <Typography variant="body2">{criterion.criterion}</Typography>
                 </TableCell>
-                <TableCell align="right">{formatCurrency(economic.medicationCosts)}</TableCell>
-                <TableCell align="right">{formatCurrency(economic.personnelCosts)}</TableCell>
-                <TableCell align="right">{formatCurrency(economic.otherCosts)}</TableCell>
-                <TableCell align="center">{economic.sales}</TableCell>
-                <TableCell align="center">{economic.profitability}%</TableCell>
-                <TableCell align="center">{economic.budgetCompletion}%</TableCell>
+                <TableCell>{criterion.periodicity}</TableCell>
+                <TableCell>{criterion.responsible}</TableCell>
+                <TableCell align="center">
+                  <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                    <MonthlyProgressChart
+                      months={completionToMonths(criterion.completion, criterion.status)}
+                      size={80}
+                      year={new Date().getFullYear()}
+                    />
+                  </Box>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
-
-      <Box sx={{ mt: 3, p: 2, backgroundColor: 'info.light', borderRadius: 1 }}>
-        <Typography variant="body2" sx={{ fontStyle: 'italic' }}>
-          Здесь разместить график из Yandex DataLens по экономическим показателям
-        </Typography>
-      </Box>
     </Box>
   );
 };

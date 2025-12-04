@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Paper,
@@ -14,8 +14,12 @@ import {
 } from '@mui/material';
 import { MonthlyProgressChart, completionToMonths } from '../components/charts';
 import { safetyCriteria } from '../data/mockData';
+import { IncidentLogModal } from '../components/modals/IncidentLogModal';
+import { incidentLogData } from '../data/incidentLogData';
 
 export const SafetyInfoPage: React.FC = () => {
+  const [incidentLogOpen, setIncidentLogOpen] = useState(false);
+
   // Фильтруем только информационную безопасность
   const filteredCriteria = safetyCriteria.filter(
     c => c.category === 'Информационная безопасность'
@@ -34,11 +38,16 @@ export const SafetyInfoPage: React.FC = () => {
     criteria: filteredCriteria.filter(c => c.subcategory === subcategory),
   }));
 
+  // Проверка, является ли критерий "Ведение журнала учета нештатных ситуаций"
+  const isIncidentLogCriterion = (criterion: string) => {
+    return criterion === 'Ведение журнала учета нештатных ситуаций';
+  };
+
   return (
     <Box>
-      <Typography variant="h4" sx={{ mb: 2, fontWeight: 600 }}>
+      {/* <Typography variant="h4" sx={{ mb: 2, fontWeight: 600 }}>
         I уровень информационного центра
-      </Typography>
+      </Typography> */}
 
       <Card
         sx={{
@@ -89,7 +98,24 @@ export const SafetyInfoPage: React.FC = () => {
                     <TableRow key={criterion.id} hover>
                       <TableCell>{criterion.number}</TableCell>
                       <TableCell>
-                        <Typography variant="body2">{criterion.criterion}</Typography>
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            cursor: isIncidentLogCriterion(criterion.criterion) ? 'pointer' : 'default',
+                            color: isIncidentLogCriterion(criterion.criterion) ? 'primary.main' : 'inherit',
+                            textDecoration: isIncidentLogCriterion(criterion.criterion) ? 'underline' : 'none',
+                            '&:hover': isIncidentLogCriterion(criterion.criterion) ? {
+                              color: 'primary.dark',
+                            } : {},
+                          }}
+                          onClick={() => {
+                            if (isIncidentLogCriterion(criterion.criterion)) {
+                              setIncidentLogOpen(true);
+                            }
+                          }}
+                        >
+                          {criterion.criterion}
+                        </Typography>
                       </TableCell>
                       <TableCell>{criterion.periodicity}</TableCell>
                       <TableCell>{criterion.responsible}</TableCell>
@@ -114,6 +140,12 @@ export const SafetyInfoPage: React.FC = () => {
           )}
         </Box>
       ))}
+
+      <IncidentLogModal
+        open={incidentLogOpen}
+        onClose={() => setIncidentLogOpen(false)}
+        data={incidentLogData}
+      />
     </Box>
   );
 };

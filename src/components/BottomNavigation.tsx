@@ -14,12 +14,12 @@ interface BottomNavigationProps {
 }
 
 const navigationButtons: NavigationButton[] = [
-  { id: 'safety-lek', label: 'S Безопасность (Лек)', color: '#fff', bgColor: '#f44336' },
-  { id: 'safety-info', label: 'S Безопасность (Информ)', color: '#fff', bgColor: '#f44336' },
+  // { id: 'safety-lek', label: 'S Безопасность (Лек)', color: '#fff', bgColor: '#f44336' },
+  { id: 'safety-info', label: 'S Безопасность', color: '#fff', bgColor: '#f44336' },
   // { id: 'quality-tfoms', label: 'Q Качество (Пар МО)(ТФОМС)', color: '#fff', bgColor: '#2196f3' },
   { id: 'quality-i9', label: 'Q Качество', color: '#fff', bgColor: '#2196f3' },
   // { id: 'quality-eck', label: 'Q Качество (ЕЦК)', color: '#fff', bgColor: '#2196f3' },
-  { id: 'execution', label: 'D Исполнение (Кри главы)', color: '#fff', bgColor: '#4caf50' },
+  { id: 'execution', label: 'D Исполнение', color: '#fff', bgColor: '#4caf50' },
   { id: 'costs', label: 'С Затраты', color: '#000', bgColor: '#ffc107' },
   { id: 'corpculture', label: 'М КорпКультура', color: '#fff', bgColor: '#9c27b0' },
 ];

@@ -38,17 +38,17 @@ interface LayoutProps {
 }
 
 const menuItems = [
-  { id: 'safety-lek', label: 'S Безопасность (Лек)', icon: <PharmacyIcon />, color: '#f44336' },
-  { id: 'safety-info', label: 'S Безопасность (Информ)', icon: <ComputerIcon />, color: '#f44336' },
+  // { id: 'safety-lek', label: 'S Безопасность (Лек)', icon: <PharmacyIcon />, color: '#f44336' },
+  { id: 'safety-info', label: 'S Безопасность', icon: <ComputerIcon />, color: '#f44336' },
   // { id: 'quality-tfoms', label: 'Q Качество (Пар МО)(ТФОМС)', icon: <CheckCircleIcon />, color: '#2196f3' },
   { id: 'quality-i9', label: 'Q Качество', icon: <CheckCircleIcon />, color: '#2196f3' },
   // { id: 'quality-eck', label: 'Q Качество (ЕЦК)', icon: <CheckCircleIcon />, color: '#2196f3' },
-  { id: 'execution', label: 'D Исполнение (Кри главы)', icon: <AssessmentIcon />, color: '#4caf50' },
+  { id: 'execution', label: 'D Исполнение', icon: <AssessmentIcon />, color: '#4caf50' },
   { id: 'costs', label: 'С Затраты', icon: <MoneyIcon />, color: '#ffc107' },
   { id: 'corpculture', label: 'М КорпКультура', icon: <BusinessIcon />, color: '#9c27b0' },
-  { id: 'dashboard', label: 'Дашборд', icon: <DashboardIcon />, color: '#1976d2' },
-  { id: 'kpi', label: 'KPI', icon: <AssessmentIcon />, color: '#1976d2' },
-  { id: 'incidents', label: 'Инциденты', icon: <WarningIcon />, color: '#1976d2' },
+  // { id: 'dashboard', label: 'Дашборд', icon: <DashboardIcon />, color: '#1976d2' },
+  // { id: 'kpi', label: 'KPI', icon: <AssessmentIcon />, color: '#1976d2' },
+  // { id: 'incidents', label: 'Инциденты', icon: <WarningIcon />, color: '#1976d2' },
   { id: 'settings', label: 'Настройки', icon: <SettingsIcon />, color: '#1976d2' },
 ];
 
@@ -67,7 +67,7 @@ export const Layout: React.FC<LayoutProps> = ({
   const drawer = (
     <Box>
       <Toolbar>
-        <Typography variant="h6" noWrap component="div">
+        <Typography variant="h6" noWrap component="div" sx={{ fontSize: '1rem' }}>
           Информационный центр
         </Typography>
       </Toolbar>
